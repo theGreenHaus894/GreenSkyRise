@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GreenSkyRise — Luxury Living. Sustainable Future.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --g0: #0a1a0f;
+    --g1: #0f2a18;
+    --g2: #1a3d25;
+    --g3: #236b3a;
+    --g4: #2d9150;
+    --g5: #4db870;
+    --g6: #7dd49a;
+    --g7: #b8ecc8;
+    --g8: #e4f7eb;
+    --white: #f8fdf9;
+    --gray: #d0d8d2;
+    --mid: #6b7d72;
+    --dark: #0e1a13;
+    --glass: rgba(255,255,255,0.07);
+    --glass-border: rgba(255,255,255,0.12);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--g0);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(10,26,15,0.7);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    transition: background 0.3s;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 600; letter-spacing: 0.05em;
+    color: var(--white);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .nav-logo span { color: var(--g5); }
+  .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+  .nav-links a {
+    color: var(--gray); font-size: 0.85rem; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--g5); }
+  .nav-cta {
+    background: var(--g4); color: var(--dark); font-size: 0.82rem;
+    font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+    border: none; padding: 0.65rem 1.6rem; border-radius: 2px;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--g5); }
+
+  /* HERO */
+  #hero {
+    position: relative; height: 100vh; display: flex;
+    align-items: center; justify-content: center; flex-direction: column;
+    text-align: center; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(160deg, #071210 0%, #0f2a18 40%, #1a3d25 70%, #071210 100%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.15;
+    background-image: linear-gradient(var(--g3) 1px, transparent 1px),
+      linear-gradient(90deg, var(--g3) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-glow {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(77,184,112,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-badge {
+    display: inline-block; border: 1px solid var(--g4); color: var(--g5);
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 0.45rem 1.4rem; border-radius: 2px; margin-bottom: 2rem;
+    background: rgba(45,145,80,0.1);
+    animation: fadeUp 0.8s ease forwards;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 300; line-height: 0.95; letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    animation: fadeUp 0.9s 0.1s ease forwards; opacity: 0;
+  }
+  .hero-title em { font-style: italic; color: var(--g5); }
+  .hero-sub {
+    font-size: 1.05rem; color: var(--gray); font-weight: 300;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 3rem;
+    animation: fadeUp 0.9s 0.2s ease forwards; opacity: 0;
+  }
+  .hero-btns {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    animation: fadeUp 0.9s 0.35s ease forwards; opacity: 0;
+  }
+  .btn-primary {
+    background: var(--g4); color: var(--dark); padding: 0.9rem 2.2rem;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; border: none; cursor: pointer; border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: var(--g5); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--white); padding: 0.9rem 2.2rem;
+    font-size: 0.85rem; font-weight: 400; letter-spacing: 0.06em;
+    text-transform: uppercase; border: 1px solid var(--glass-border);
+    cursor: pointer; border-radius: 2px; transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--g4); color: var(--g5); transform: translateY(-2px); }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    color: var(--mid); font-size: 0.72rem; letter-spacing: 0.15em;
+    text-transform: uppercase; animation: bounce 2s infinite;
+  }
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--g4), transparent);
+  }
+
+  /* BUILDING 3D */
+  .building-canvas {
+    position: absolute; right: 8%; top: 50%; transform: translateY(-50%);
+    width: 280px; height: 400px;
+    animation: fadeUp 1.2s 0.3s ease forwards; opacity: 0;
+  }
+  .building-svg { width: 100%; height: 100%; }
+
+  /* SECTIONS */
+  section { padding: 7rem 4rem; }
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--g5); margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300; line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--g5); }
+  .section-body { font-size: 1rem; color: var(--gray); line-height: 1.75; max-width: 600px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  /* ABOUT */
+  #about { background: var(--g1); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; }
+  .feature-item {
+    background: var(--glass); border: 1px solid var(--glass-border);
+    padding: 1.1rem 1.3rem; border-radius: 4px;
+    display: flex; align-items: flex-start; gap: 0.8rem;
+    transition: background 0.2s;
+  }
+  .feature-item:hover { background: rgba(255,255,255,0.11); }
+  .feature-icon { font-size: 1.3rem; flex-shrink: 0; }
+  .feature-text { font-size: 0.88rem; color: var(--gray); line-height: 1.5; }
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .stat-card {
+    text-align: center; padding: 2rem 1rem;
+    border: 1px solid var(--glass-border); border-radius: 4px;
+    background: var(--glass);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 300; color: var(--g5); line-height: 1;
+  }
+  .stat-label { font-size: 0.8rem; color: var(--gray); margin-top: 0.5rem; line-height: 1.4; }
+
+  /* BUILDING TOUR */
+  #tour { background: var(--g0); position: relative; overflow: hidden; }
+  .tour-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .tour-3d {
+    position: relative; height: 500px;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 8px; overflow: hidden; cursor: grab;
+  }
+  .tour-3d:active { cursor: grabbing; }
+  .tour-amenities { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 2rem; }
+  .amenity-tag {
+    display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.2rem;
+    border: 1px solid var(--glass-border); border-radius: 4px;
+    cursor: pointer; transition: all 0.2s; font-size: 0.9rem; color: var(--gray);
+  }
+  .amenity-tag:hover, .amenity-tag.active {
+    background: rgba(45,145,80,0.15); border-color: var(--g4); color: var(--white);
+  }
+  .amenity-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--g4); flex-shrink: 0; }
+
+  /* APARTMENTS */
+  #apartments { background: var(--g1); }
+  .apt-tabs {
+    display: flex; gap: 0; border-bottom: 1px solid var(--glass-border);
+    margin-bottom: 3rem; flex-wrap: wrap;
+  }
+  .apt-tab {
+    padding: 1rem 2rem; background: none; border: none; color: var(--mid);
+    font-size: 0.88rem; letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.2s; border-bottom: 2px solid transparent;
+    font-family: 'DM Sans', sans-serif;
+    margin-bottom: -1px;
+  }
+  .apt-tab.active { color: var(--g5); border-bottom-color: var(--g5); }
+  .apt-panel { display: none; }
+  .apt-panel.active { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: start; }
+  .apt-visual {
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 8px; aspect-ratio: 4/3; overflow: hidden; position: relative;
+  }
+  .apt-plan {
+    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  }
+  .apt-details { padding-top: 1rem; }
+  .apt-type-badge {
+    display: inline-block; background: rgba(45,145,80,0.2);
+    border: 1px solid var(--g4); color: var(--g5);
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 0.4rem 1rem; border-radius: 2px; margin-bottom: 1.5rem;
+  }
+  .apt-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem; font-weight: 300; margin-bottom: 1.5rem;
+  }
+  .apt-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+  .spec-item { background: var(--glass); border: 1px solid var(--glass-border); padding: 1rem; border-radius: 4px; }
+  .spec-val { font-size: 1.4rem; font-weight: 500; color: var(--white); }
+  .spec-key { font-size: 0.78rem; color: var(--mid); margin-top: 0.2rem; }
+  .apt-features { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 2rem; }
+  .apt-features li { display: flex; align-items: center; gap: 0.7rem; font-size: 0.9rem; color: var(--gray); }
+  .apt-features li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--g5); flex-shrink: 0; }
+  .avail-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(45,145,80,0.15); border: 1px solid var(--g4);
+    color: var(--g5); padding: 0.5rem 1.2rem; border-radius: 2px; font-size: 0.85rem;
+  }
+  .avail-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--g5); animation: pulse 2s infinite; }
+
+  /* AVAILABILITY */
+  #availability { background: var(--g0); }
+  .avail-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .avail-card {
+    border: 1px solid var(--glass-border); border-radius: 8px; padding: 2rem;
+    background: var(--glass); text-align: center; transition: all 0.3s;
+  }
+  .avail-card:hover { background: rgba(45,145,80,0.12); border-color: var(--g4); transform: translateY(-4px); }
+  .avail-count { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; color: var(--g5); line-height: 1; }
+  .avail-type { font-size: 1rem; color: var(--white); margin: 0.5rem 0 0.3rem; font-weight: 500; }
+  .avail-status { font-size: 0.8rem; color: var(--mid); }
+  .capacity-bar {
+    margin-top: 3rem; padding: 2.5rem; background: var(--glass);
+    border: 1px solid var(--glass-border); border-radius: 8px; text-align: center;
+  }
+  .cap-num { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; color: var(--g5); }
+  .cap-label { font-size: 1rem; color: var(--gray); margin-top: 0.5rem; }
+
+  /* ROOFTOP */
+  #rooftop { background: var(--g1); }
+  .rooftop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .rooftop-visual {
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 8px; height: 460px; overflow: hidden; position: relative;
+  }
+  .garden-benefits { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .benefit-row {
+    display: flex; align-items: flex-start; gap: 1rem; padding: 1rem;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .benefit-icon { font-size: 1.5rem; }
+  .benefit-text h4 { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.2rem; }
+  .benefit-text p { font-size: 0.82rem; color: var(--mid); line-height: 1.5; }
+
+  /* AMENITIES */
+  #amenities { background: var(--g0); }
+  .amenities-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; margin-top: 3rem; }
+  .amen-card {
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 8px; padding: 1.8rem 1.2rem; text-align: center;
+    transition: all 0.3s; cursor: default;
+  }
+  .amen-card:hover { background: rgba(45,145,80,0.15); border-color: var(--g4); transform: translateY(-4px); }
+  .amen-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+  .amen-name { font-size: 0.82rem; color: var(--gray); line-height: 1.4; }
+
+  /* GALLERY */
+  #gallery { background: var(--g1); }
+  .gallery-tabs { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .gallery-tab {
+    padding: 0.55rem 1.4rem; background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 2px; color: var(--gray); font-size: 0.82rem; letter-spacing: 0.06em;
+    text-transform: uppercase; cursor: pointer; transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .gallery-tab.active, .gallery-tab:hover { background: rgba(45,145,80,0.2); border-color: var(--g4); color: var(--g5); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .gallery-item {
+    aspect-ratio: 4/3; border-radius: 4px; overflow: hidden;
+    cursor: pointer; position: relative; background: var(--glass);
+    border: 1px solid var(--glass-border);
+    transition: transform 0.3s;
+  }
+  .gallery-item:hover { transform: scale(1.02); }
+  .gallery-item:first-child { grid-column: span 2; aspect-ratio: 2/1; }
+  .gallery-overlay {
+    position: absolute; inset: 0; background: rgba(10,26,15,0.6);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s; font-size: 2rem;
+  }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+  /* BOOKING */
+  #booking { background: var(--g0); }
+  .booking-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start; }
+  .form-group { margin-bottom: 1.5rem; }
+  .form-group label { display: block; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.6rem; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; background: var(--glass); border: 1px solid var(--glass-border);
+    color: var(--white); padding: 0.9rem 1.2rem; border-radius: 4px;
+    font-size: 0.92rem; font-family: 'DM Sans', sans-serif;
+    transition: border-color 0.2s; outline: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--g4);
+  }
+  .form-group select option { background: var(--g1); color: var(--white); }
+  .form-group textarea { height: 100px; resize: vertical; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .success-msg {
+    display: none; background: rgba(45,145,80,0.15); border: 1px solid var(--g4);
+    padding: 1.2rem; border-radius: 4px; color: var(--g6); font-size: 0.92rem;
+    line-height: 1.6; margin-top: 1rem;
+  }
+
+  /* REVIEWS */
+  #reviews { background: var(--g1); }
+  .reviews-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 2.5rem; }
+  .avg-rating { font-family: 'Cormorant Garamond', serif; font-size: 4rem; color: var(--g5); font-weight: 300; }
+  .stars { color: var(--g5); font-size: 1.2rem; }
+  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .review-card {
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 8px; padding: 1.6rem;
+    transition: background 0.2s;
+  }
+  .review-card:hover { background: rgba(255,255,255,0.09); }
+  .review-stars { color: var(--g5); margin-bottom: 0.8rem; font-size: 1rem; }
+  .review-text { font-size: 0.92rem; color: var(--gray); line-height: 1.65; margin-bottom: 1rem; font-style: italic; }
+  .review-author { font-size: 0.82rem; color: var(--mid); font-weight: 500; }
+  .add-review { margin-top: 3rem; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 8px; padding: 2rem; }
+  .add-review h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; margin-bottom: 1.5rem; }
+  .star-selector { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .star-btn { background: none; border: none; font-size: 1.6rem; cursor: pointer; color: var(--mid); transition: color 0.15s; }
+  .star-btn.selected, .star-btn:hover { color: var(--g5); }
+  #new-reviews { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2rem; }
+
+  /* FOOTER */
+  footer {
+    background: var(--g0); border-top: 1px solid var(--glass-border);
+    padding: 4rem;
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 600; margin-bottom: 1rem;
+  }
+  .footer-logo span { color: var(--g5); }
+  .footer-stmt { font-size: 0.88rem; color: var(--mid); line-height: 1.7; max-width: 280px; }
+  .footer-heading { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--g5); margin-bottom: 1.2rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .footer-links a { color: var(--mid); font-size: 0.88rem; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--white); }
+  .social-row { display: flex; gap: 1rem; margin-top: 1.5rem; }
+  .social-btn {
+    width: 38px; height: 38px; border: 1px solid var(--glass-border);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    color: var(--mid); text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+  }
+  .social-btn:hover { border-color: var(--g4); color: var(--g5); }
+  .footer-bottom {
+    margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--glass-border);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.8rem; color: var(--mid);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  @keyframes rotate3d {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.92); align-items: center; justify-content: center;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox-inner { max-width: 800px; width: 90%; position: relative; }
+  .lightbox-close {
+    position: absolute; top: -2.5rem; right: 0; background: none; border: none;
+    color: var(--white); font-size: 1.5rem; cursor: pointer; padding: 0.3rem;
+  }
+  .lightbox-img { width: 100%; border-radius: 8px; }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--g0); }
+  ::-webkit-scrollbar-thumb { background: var(--g3); border-radius: 2px; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 1.5rem; }
+    .about-grid, .tour-inner, .rooftop-grid, .booking-grid, .apt-panel.active { grid-template-columns: 1fr; gap: 2rem; }
+    .stats-row, .avail-grid { grid-template-columns: 1fr 1fr; }
+    .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .building-canvas { display: none; }
+    .hero-title { font-size: 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <div class="nav-logo">🌿 Green<span>Sky</span>Rise</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#apartments">Apartments</a></li>
+    <li><a href="#availability">Availability</a></li>
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book a Tour</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+
+  <!-- Animated 3D Building -->
+  <div class="building-canvas">
+    <svg class="building-svg" viewBox="0 0 280 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bldgGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#1a3d25"/>
+          <stop offset="100%" stop-color="#0f2a18"/>
+        </linearGradient>
+        <linearGradient id="bldgFront" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#236b3a"/>
+          <stop offset="100%" stop-color="#0f2a18"/>
+        </linearGradient>
+        <linearGradient id="glowGrad" x1="0.5" y1="0" x2="0.5" y2="1">
+          <stop offset="0%" stop-color="#4db870" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#4db870" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <!-- Ground glow -->
+      <ellipse cx="140" cy="385" rx="80" ry="10" fill="url(#glowGrad)"/>
+      <!-- Building shadow side -->
+      <polygon points="200,50 240,80 240,360 200,340" fill="url(#bldgGrad)"/>
+      <!-- Building front -->
+      <rect x="60" y="40" width="140" height="300" fill="url(#bldgFront)" rx="2"/>
+      <!-- Roof -->
+      <polygon points="60,40 140,10 200,40" fill="#2d9150"/>
+      <polygon points="200,40 240,60 200,50" fill="#1a3d25"/>
+      <!-- Solar panels on roof -->
+      <rect x="75" y="18" width="50" height="20" fill="#4db870" rx="2" opacity="0.8"/>
+      <rect x="130" y="22" width="40" height="14" fill="#4db870" rx="2" opacity="0.7"/>
+      <!-- Windows grid -->
+      <g fill="#7dd49a" opacity="0.35">
+        <!-- Row 1 -->
+        <rect x="72" y="60" width="24" height="18" rx="1"/>
+        <rect x="102" y="60" width="24" height="18" rx="1"/>
+        <rect x="132" y="60" width="24" height="18" rx="1"/>
+        <rect x="162" y="60" width="24" height="18" rx="1"/>
+        <!-- Row 2 -->
+        <rect x="72" y="90" width="24" height="18" rx="1"/>
+        <rect x="102" y="90" width="24" height="18" rx="1"/>
+        <rect x="132" y="90" width="24" height="18" rx="1"/>
+        <rect x="162" y="90" width="24" height="18" rx="1"/>
+        <!-- Row 3 -->
+        <rect x="72" y="120" width="24" height="18" rx="1"/>
+        <rect x="102" y="120" width="24" height="18" rx="1"/>
+        <rect x="132" y="120" width="24" height="18" rx="1"/>
+        <rect x="162" y="120" width="24" height="18" rx="1"/>
+        <!-- Row 4 -->
+        <rect x="72" y="150" width="24" height="18" rx="1"/>
+        <rect x="102" y="150" width="24" height="18" rx="1"/>
+        <rect x="132" y="150" width="24" height="18" rx="1"/>
+        <rect x="162" y="150" width="24" height="18" rx="1"/>
+        <!-- Row 5 -->
+        <rect x="72" y="180" width="24" height="18" rx="1"/>
+        <rect x="102" y="180" width="24" height="18" rx="1"/>
+        <rect x="132" y="180" width="24" height="18" rx="1"/>
+        <rect x="162" y="180" width="24" height="18" rx="1"/>
+        <!-- Row 6 -->
+        <rect x="72" y="210" width="24" height="18" rx="1"/>
+        <rect x="102" y="210" width="24" height="18" rx="1"/>
+        <rect x="132" y="210" width="24" height="18" rx="1"/>
+        <rect x="162" y="210" width="24" height="18" rx="1"/>
+        <!-- Row 7 -->
+        <rect x="72" y="240" width="24" height="18" rx="1"/>
+        <rect x="102" y="240" width="24" height="18" rx="1"/>
+        <rect x="132" y="240" width="24" height="18" rx="1"/>
+        <rect x="162" y="240" width="24" height="18" rx="1"/>
+      </g>
+      <!-- Lit windows -->
+      <g fill="#b8ecc8" opacity="0.9">
+        <rect x="72" y="60" width="24" height="18" rx="1"/>
+        <rect x="132" y="90" width="24" height="18" rx="1"/>
+        <rect x="102" y="120" width="24" height="18" rx="1"/>
+        <rect x="162" y="150" width="24" height="18" rx="1"/>
+        <rect x="72" y="180" width="24" height="18" rx="1"/>
+        <rect x="132" y="210" width="24" height="18" rx="1"/>
+        <rect x="102" y="240" width="24" height="18" rx="1"/>
+      </g>
+      <!-- Rooftop garden hint -->
+      <ellipse cx="95" cy="42" rx="18" ry="8" fill="#2d9150" opacity="0.8"/>
+      <ellipse cx="140" cy="30" rx="12" ry="5" fill="#4db870" opacity="0.9"/>
+      <!-- Front door -->
+      <rect x="116" y="300" width="28" height="40" fill="#0a1a0f" rx="2"/>
+      <rect x="119" y="303" width="22" height="34" fill="#1a3d25" rx="1"/>
+      <!-- Ground -->
+      <rect x="50" y="340" width="190" height="12" fill="#0f2a18" rx="2"/>
+      <!-- EV station hint -->
+      <rect x="220" y="310" width="16" height="30" fill="#236b3a" rx="2"/>
+      <rect x="222" y="316" width="12" height="10" fill="#4db870" rx="1" opacity="0.7"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">Est. 2024 · Boston, MA</div>
+    <h1 class="hero-title">Green<em>Sky</em><br>Rise</h1>
+    <p class="hero-sub">Luxury Living. Sustainable Future.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book a Tour</button>
+      <button class="btn-outline" onclick="document.getElementById('apartments').scrollIntoView({behavior:'smooth'})">View Apartments</button>
+      <button class="btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Explore Sustainability</button>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="fade-in">
+        <p class="section-label">About GreenSkyRise</p>
+        <h2 class="section-title">A New Standard for <em>Conscious</em> Living</h2>
+        <p class="section-body">GreenSkyRise is a state-of-the-art eco-friendly apartment community designed for modern living while minimizing environmental impact. Every detail — from materials to systems — was chosen with purpose.</p>
+
+        <div class="features-grid">
+          <div class="feature-item"><span class="feature-icon">☀️</span><span class="feature-text">Solar panel energy systems</span></div>
+          <div class="feature-item"><span class="feature-icon">💧</span><span class="feature-text">Rainwater collection systems</span></div>
+          <div class="feature-item"><span class="feature-icon">⚡</span><span class="feature-text">Energy-efficient appliances</span></div>
+          <div class="feature-item"><span class="feature-icon">🏠</span><span class="feature-text">Smart home technology</span></div>
+          <div class="feature-item"><span class="feature-icon">🌱</span><span class="feature-text">Sustainable construction materials</span></div>
+          <div class="feature-item"><span class="feature-icon">🚗</span><span class="feature-text">EV charging stations</span></div>
+          <div class="feature-item"><span class="feature-icon">🌡️</span><span class="feature-text">High-efficiency insulation</span></div>
+          <div class="feature-item"><span class="feature-icon">♻️</span><span class="feature-text">Recycling & composting programs</span></div>
+        </div>
+      </div>
+      <div class="fade-in" style="transition-delay: 0.15s;">
+        <div class="stats-row" style="grid-template-columns:1fr 1fr; margin-top:0;">
+          <div class="stat-card">
+            <div class="stat-num">40%</div>
+            <div class="stat-label">Lower energy usage vs. conventional buildings</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">35%</div>
+            <div class="stat-label">Reduction in carbon emissions</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">90%</div>
+            <div class="stat-label">Recyclable building materials</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">🌿</div>
+            <div class="stat-label">Rooftop garden reducing heat & improving air quality</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTIVE 3D TOUR -->
+<section id="tour">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Explore</p>
+      <h2 class="section-title">Interactive Building <em>Tour</em></h2>
+    </div>
+    <div class="tour-inner" style="margin-top:2.5rem;">
+      <div class="tour-3d fade-in" id="tourCanvas">
+        <canvas id="buildingCanvas" style="width:100%;height:100%;"></canvas>
+        <div style="position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);font-size:0.75rem;color:var(--mid);letter-spacing:0.08em;text-transform:uppercase;">Drag to rotate · Scroll to zoom</div>
+      </div>
+      <div class="fade-in" style="transition-delay:0.15s;">
+        <p class="section-body">Explore GreenSkyRise's thoughtfully designed spaces. Click any amenity to highlight it on the model.</p>
+        <div class="tour-amenities" style="margin-top:1.5rem;" id="amenityTags">
+          <div class="amenity-tag active" data-floor="roof" onclick="highlightAmenity(this,'roof')">
+            <div class="amenity-dot"></div><span>Rooftop Garden — Floor 20</span>
+          </div>
+          <div class="amenity-tag" data-floor="gym" onclick="highlightAmenity(this,'gym')">
+            <div class="amenity-dot"></div><span>Fitness Center — Floor 2</span>
+          </div>
+          <div class="amenity-tag" data-floor="lounge" onclick="highlightAmenity(this,'lounge')">
+            <div class="amenity-dot"></div><span>Community Lounge — Floor 3</span>
+          </div>
+          <div class="amenity-tag" data-floor="cowork" onclick="highlightAmenity(this,'cowork')">
+            <div class="amenity-dot"></div><span>Co-working Spaces — Floor 4</span>
+          </div>
+          <div class="amenity-tag" data-floor="ev" onclick="highlightAmenity(this,'ev')">
+            <div class="amenity-dot"></div><span>EV Charging — Basement</span>
+          </div>
+          <div class="amenity-tag" data-floor="parking" onclick="highlightAmenity(this,'parking')">
+            <div class="amenity-dot"></div><span>Secure Parking — Basement</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APARTMENTS -->
+<section id="apartments">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Floor Plans</p>
+      <h2 class="section-title">Find Your <em>Perfect</em> Home</h2>
+    </div>
+    <div class="apt-tabs" style="margin-top:2.5rem;">
+      <button class="apt-tab active" onclick="switchApt(this,'studio')">Studio</button>
+      <button class="apt-tab" onclick="switchApt(this,'1bed')">One Bedroom</button>
+      <button class="apt-tab" onclick="switchApt(this,'2bed')">Two Bedroom</button>
+      <button class="apt-tab" onclick="switchApt(this,'3bed')">Three Bedroom</button>
+    </div>
+
+    <!-- Studio -->
+    <div class="apt-panel active" id="panel-studio">
+      <div class="apt-visual">
+        <div class="apt-plan">
+          <svg viewBox="0 0 320 240" width="100%" height="100%">
+            <rect width="320" height="240" fill="#0a1a0f"/>
+            <!-- Walls -->
+            <rect x="30" y="20" width="260" height="200" fill="none" stroke="#2d9150" stroke-width="2"/>
+            <!-- Kitchen -->
+            <rect x="30" y="20" width="100" height="80" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="80" y="65" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Kitchen</text>
+            <!-- Living/Bedroom -->
+            <rect x="130" y="20" width="160" height="120" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="210" y="85" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Living / Bedroom</text>
+            <!-- Bathroom -->
+            <rect x="30" y="100" width="100" height="70" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="80" y="140" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Bathroom</text>
+            <!-- Storage -->
+            <rect x="30" y="170" width="100" height="50" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="80" y="200" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Storage</text>
+            <!-- Hallway -->
+            <rect x="130" y="140" width="160" height="80" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="210" y="185" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Hallway / Entry</text>
+            <!-- Compass -->
+            <text x="290" y="215" fill="#4db870" font-size="11" text-anchor="middle" font-family="DM Sans" font-weight="500">N</text>
+            <line x1="290" y1="218" x2="290" y2="230" stroke="#4db870" stroke-width="1"/>
+          </svg>
+        </div>
+      </div>
+      <div class="apt-details">
+        <div class="apt-type-badge">Studio</div>
+        <h3 class="apt-name">The Juniper</h3>
+        <div class="apt-specs">
+          <div class="spec-item"><div class="spec-val">450 ft²</div><div class="spec-key">Square Feet</div></div>
+          <div class="spec-item"><div class="spec-val">1 Bath</div><div class="spec-key">Bathrooms</div></div>
+          <div class="spec-item"><div class="spec-val">2</div><div class="spec-key">Max Residents</div></div>
+          <div class="spec-item"><div class="spec-val">$2,100</div><div class="spec-key">Starting From / mo</div></div>
+        </div>
+        <ul class="apt-features">
+          <li>Modern integrated kitchen with smart appliances</li>
+          <li>Floor-to-ceiling windows</li>
+          <li>Smart thermostat & lighting control</li>
+          <li>In-unit washer/dryer hookups</li>
+          <li>High-speed fiber internet ready</li>
+        </ul>
+        <div class="avail-badge"><div class="avail-dot"></div> 12 Units Available</div>
+      </div>
+    </div>
+
+    <!-- 1 Bed -->
+    <div class="apt-panel" id="panel-1bed">
+      <div class="apt-visual">
+        <div class="apt-plan">
+          <svg viewBox="0 0 320 240" width="100%" height="100%">
+            <rect width="320" height="240" fill="#0a1a0f"/>
+            <rect x="20" y="15" width="280" height="210" fill="none" stroke="#2d9150" stroke-width="2"/>
+            <rect x="20" y="15" width="130" height="90" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="85" y="65" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Bedroom</text>
+            <rect x="150" y="15" width="150" height="100" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="225" y="70" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Living Room</text>
+            <rect x="20" y="105" width="80" height="120" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="60" y="170" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Kitchen</text>
+            <rect x="100" y="105" width="80" height="60" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="140" y="138" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Bathroom</text>
+            <rect x="180" y="115" width="120" height="110" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="240" y="175" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Balcony</text>
+            <text x="295" y="215" fill="#4db870" font-size="11" text-anchor="middle" font-family="DM Sans" font-weight="500">N</text>
+          </svg>
+        </div>
+      </div>
+      <div class="apt-details">
+        <div class="apt-type-badge">One Bedroom</div>
+        <h3 class="apt-name">The Cedar</h3>
+        <div class="apt-specs">
+          <div class="spec-item"><div class="spec-val">720 ft²</div><div class="spec-key">Square Feet</div></div>
+          <div class="spec-item"><div class="spec-val">1 Bath</div><div class="spec-key">Bathrooms</div></div>
+          <div class="spec-item"><div class="spec-val">3</div><div class="spec-key">Max Residents</div></div>
+          <div class="spec-item"><div class="spec-val">$3,200</div><div class="spec-key">Starting From / mo</div></div>
+        </div>
+        <ul class="apt-features">
+          <li>Open-concept living and dining area</li>
+          <li>Private balcony with city views</li>
+          <li>Smart home hub pre-installed</li>
+          <li>Walk-in closet with organizers</li>
+          <li>Energy-efficient double-pane windows</li>
+        </ul>
+        <div class="avail-badge"><div class="avail-dot"></div> 18 Units Available</div>
+      </div>
+    </div>
+
+    <!-- 2 Bed -->
+    <div class="apt-panel" id="panel-2bed">
+      <div class="apt-visual">
+        <div class="apt-plan">
+          <svg viewBox="0 0 340 260" width="100%" height="100%">
+            <rect width="340" height="260" fill="#0a1a0f"/>
+            <rect x="15" y="15" width="310" height="230" fill="none" stroke="#2d9150" stroke-width="2"/>
+            <rect x="15" y="15" width="130" height="100" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="80" y="70" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Bedroom 1</text>
+            <rect x="145" y="15" width="180" height="100" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="235" y="70" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Living Room</text>
+            <rect x="15" y="115" width="130" height="130" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="80" y="185" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Bedroom 2</text>
+            <rect x="145" y="115" width="100" height="70" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="195" y="155" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Kitchen</text>
+            <rect x="245" y="115" width="80" height="70" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="285" y="155" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Bath 1</text>
+            <rect x="145" y="185" width="180" height="60" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="235" y="220" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Bath 2 + Laundry</text>
+          </svg>
+        </div>
+      </div>
+      <div class="apt-details">
+        <div class="apt-type-badge">Two Bedroom</div>
+        <h3 class="apt-name">The Maple</h3>
+        <div class="apt-specs">
+          <div class="spec-item"><div class="spec-val">1,100 ft²</div><div class="spec-key">Square Feet</div></div>
+          <div class="spec-item"><div class="spec-val">2 Bath</div><div class="spec-key">Bathrooms</div></div>
+          <div class="spec-item"><div class="spec-val">5</div><div class="spec-key">Max Residents</div></div>
+          <div class="spec-item"><div class="spec-val">$4,800</div><div class="spec-key">Starting From / mo</div></div>
+        </div>
+        <ul class="apt-features">
+          <li>Family-friendly open layout</li>
+          <li>Large living room with eco-friendly flooring</li>
+          <li>In-unit smart laundry</li>
+          <li>Two full bathrooms with rainfall showers</li>
+          <li>Solar-heated hot water system</li>
+        </ul>
+        <div class="avail-badge"><div class="avail-dot"></div> 10 Units Available</div>
+      </div>
+    </div>
+
+    <!-- 3 Bed -->
+    <div class="apt-panel" id="panel-3bed">
+      <div class="apt-visual">
+        <div class="apt-plan">
+          <svg viewBox="0 0 360 280" width="100%" height="100%">
+            <rect width="360" height="280" fill="#0a1a0f"/>
+            <rect x="10" y="10" width="340" height="260" fill="none" stroke="#2d9150" stroke-width="2"/>
+            <rect x="10" y="10" width="110" height="100" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="65" y="65" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Bedroom 1</text>
+            <rect x="120" y="10" width="120" height="100" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="180" y="65" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Living Room</text>
+            <rect x="240" y="10" width="110" height="100" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="295" y="65" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Balcony</text>
+            <rect x="10" y="110" width="110" height="160" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="65" y="195" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Bedroom 2</text>
+            <rect x="120" y="110" width="120" height="80" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="180" y="155" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Bedroom 3</text>
+            <rect x="240" y="110" width="110" height="80" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="295" y="155" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Kitchen</text>
+            <rect x="120" y="190" width="230" height="80" fill="none" stroke="#4db870" stroke-width="1" stroke-dasharray="4,2"/>
+            <text x="235" y="235" fill="#7dd49a" font-size="9" text-anchor="middle" font-family="DM Sans">Bath 1 / Bath 2 / Entry</text>
+          </svg>
+        </div>
+      </div>
+      <div class="apt-details">
+        <div class="apt-type-badge">Three Bedroom</div>
+        <h3 class="apt-name">The Sequoia</h3>
+        <div class="apt-specs">
+          <div class="spec-item"><div class="spec-val">1,650 ft²</div><div class="spec-key">Square Feet</div></div>
+          <div class="spec-item"><div class="spec-val">2 Bath</div><div class="spec-key">Bathrooms</div></div>
+          <div class="spec-item"><div class="spec-val">7</div><div class="spec-key">Max Residents</div></div>
+          <div class="spec-item"><div class="spec-val">$7,200</div><div class="spec-key">Starting From / mo</div></div>
+        </div>
+        <ul class="apt-features">
+          <li>Premium layout with large private balcony</li>
+          <li>Smart climate control throughout</li>
+          <li>Chef's kitchen with eco-certified appliances</li>
+          <li>Panoramic city and garden views</li>
+          <li>Private in-unit EV charger connection</li>
+        </ul>
+        <div class="avail-badge"><div class="avail-dot"></div> 6 Units Available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AVAILABILITY -->
+<section id="availability">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Availability</p>
+      <h2 class="section-title">Live <em>Availability</em></h2>
+      <p class="section-body">Updated in real time. All units include access to GreenSkyRise's full amenity suite.</p>
+    </div>
+    <div class="avail-grid fade-in" style="transition-delay:0.15s;">
+      <div class="avail-card">
+        <div class="avail-count">12</div>
+        <div class="avail-type">Studio Apartments</div>
+        <div class="avail-status">Available Now</div>
+      </div>
+      <div class="avail-card">
+        <div class="avail-count">18</div>
+        <div class="avail-type">One Bedroom</div>
+        <div class="avail-status">Available Now</div>
+      </div>
+      <div class="avail-card">
+        <div class="avail-count">10</div>
+        <div class="avail-type">Two Bedroom</div>
+        <div class="avail-status">Available Now</div>
+      </div>
+      <div class="avail-card">
+        <div class="avail-count">6</div>
+        <div class="avail-type">Three Bedroom</div>
+        <div class="avail-status">Available Now</div>
+      </div>
+    </div>
+    <div class="capacity-bar fade-in" style="transition-delay:0.25s;">
+      <div class="cap-num">180</div>
+      <div class="cap-label">Total resident capacity · 46 total units across 20 floors</div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOFTOP GARDEN -->
+<section id="rooftop">
+  <div class="container">
+    <div class="rooftop-grid">
+      <div class="fade-in">
+        <p class="section-label">Rooftop Garden</p>
+        <h2 class="section-title">A Garden in the <em>Sky</em></h2>
+        <p class="section-body">The GreenSkyRise rooftop garden helps absorb carbon dioxide, improve air quality, lower building temperatures, support local pollinators, and create a relaxing green space for all residents.</p>
+
+        <div class="garden-benefits">
+          <div class="benefit-row">
+            <span class="benefit-icon">🌫️</span>
+            <div class="benefit-text">
+              <h4>Reduces carbon footprint</h4>
+              <p>Native plantings absorb CO₂ and filter urban air pollutants daily</p>
+            </div>
+          </div>
+          <div class="benefit-row">
+            <span class="benefit-icon">💨</span>
+            <div class="benefit-text">
+              <h4>Produces cleaner air</h4>
+              <p>Over 200 plant varieties filtering particulates and releasing oxygen</p>
+            </div>
+          </div>
+          <div class="benefit-row">
+            <span class="benefit-icon">🌡️</span>
+            <div class="benefit-text">
+              <h4>Natural cooling effect</h4>
+              <p>Reduces rooftop temperature by up to 40°F, cutting A/C energy costs</p>
+            </div>
+          </div>
+          <div class="benefit-row">
+            <span class="benefit-icon">🐝</span>
+            <div class="benefit-text">
+              <h4>Supports biodiversity</h4>
+              <p>Certified pollinator habitat with seasonal wildflowers and bee gardens</p>
+            </div>
+          </div>
+          <div class="benefit-row">
+            <span class="benefit-icon">🥦</span>
+            <div class="benefit-text">
+              <h4>Community gardening</h4>
+              <p>Resident vegetable plots, herb gardens, and composting stations</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fade-in" style="transition-delay:0.15s;">
+        <div class="rooftop-visual">
+          <svg viewBox="0 0 400 460" width="100%" height="100%">
+            <defs>
+              <radialGradient id="skyGrad" cx="50%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#0d4020"/>
+                <stop offset="100%" stop-color="#071210"/>
+              </radialGradient>
+            </defs>
+            <rect width="400" height="460" fill="url(#skyGrad)"/>
+            <!-- Garden paths -->
+            <rect x="50" y="100" width="300" height="280" fill="#0f2a18" rx="4"/>
+            <!-- Central circle -->
+            <circle cx="200" cy="240" r="60" fill="#1a3d25"/>
+            <!-- Path lines -->
+            <rect x="185" y="100" width="30" height="280" fill="#0a1a0f" opacity="0.6"/>
+            <rect x="50" y="225" width="300" height="30" fill="#0a1a0f" opacity="0.6"/>
+            <!-- Garden beds -->
+            <rect x="60" y="110" width="115" height="105" fill="#236b3a" rx="4"/>
+            <rect x="225" y="110" width="115" height="105" fill="#236b3a" rx="4"/>
+            <rect x="60" y="265" width="115" height="105" fill="#236b3a" rx="4"/>
+            <rect x="225" y="265" width="115" height="105" fill="#236b3a" rx="4"/>
+            <!-- Plants in beds -->
+            <g fill="#4db870" opacity="0.85">
+              <circle cx="90" cy="140" r="12"/><circle cx="115" cy="155" r="9"/>
+              <circle cx="140" cy="140" r="11"/><circle cx="100" cy="165" r="8"/>
+              <circle cx="130" cy="175" r="10"/><circle cx="155" cy="160" r="7"/>
+              <circle cx="255" cy="140" r="10"/><circle cx="280" cy="155" r="12"/>
+              <circle cx="305" cy="140" r="9"/><circle cx="265" cy="165" r="11"/>
+              <circle cx="295" cy="175" r="8"/><circle cx="320" cy="155" r="10"/>
+              <circle cx="90" cy="295" r="9"/><circle cx="115" cy="310" r="12"/>
+              <circle cx="140" cy="295" r="8"/><circle cx="100" cy="330" r="11"/>
+              <circle cx="130" cy="340" r="9"/><circle cx="155" cy="315" r="10"/>
+              <circle cx="255" cy="295" r="11"/><circle cx="280" cy="310" r="9"/>
+              <circle cx="305" cy="295" r="12"/><circle cx="265" cy="330" r="8"/>
+              <circle cx="295" cy="340" r="10"/><circle cx="320" cy="315" r="9"/>
+            </g>
+            <!-- Flowers -->
+            <g fill="#7dd49a" opacity="0.7">
+              <circle cx="95" cy="135" r="5"/><circle cx="145" cy="170" r="5"/>
+              <circle cx="270" cy="150" r="5"/><circle cx="310" cy="170" r="5"/>
+              <circle cx="105" cy="325" r="5"/><circle cx="150" cy="310" r="5"/>
+              <circle cx="260" cy="325" r="5"/><circle cx="315" cy="310" r="5"/>
+            </g>
+            <!-- Central seating -->
+            <circle cx="200" cy="240" r="55" fill="none" stroke="#2d9150" stroke-width="2" stroke-dasharray="6,3"/>
+            <circle cx="200" cy="240" r="30" fill="#0f2a18"/>
+            <rect x="188" y="228" width="24" height="24" fill="#1a3d25" rx="3"/>
+            <text x="200" y="244" fill="#4db870" font-size="10" text-anchor="middle" font-family="DM Sans">Seating</text>
+            <!-- Pergola hint -->
+            <rect x="90" y="92" width="220" height="12" fill="#2d9150" rx="2" opacity="0.6"/>
+            <line x1="90" y1="92" x2="90" y2="380" stroke="#2d9150" stroke-width="3"/>
+            <line x1="310" y1="92" x2="310" y2="380" stroke="#2d9150" stroke-width="3"/>
+            <!-- Label -->
+            <text x="200" y="430" fill="#4db870" font-size="12" text-anchor="middle" font-family="DM Sans" letter-spacing="3">ROOFTOP GARDEN — FLOOR 20</text>
+          </svg>
+        </div>
+        <!-- Mini gallery -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.6rem;margin-top:1rem;">
+          <div style="aspect-ratio:1;background:var(--glass);border:1px solid var(--glass-border);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:2rem;">🥦</div>
+          <div style="aspect-ratio:1;background:var(--glass);border:1px solid var(--glass-border);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:2rem;">🌸</div>
+          <div style="aspect-ratio:1;background:var(--glass);border:1px solid var(--glass-border);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:2rem;">🌿</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section id="amenities">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Amenities</p>
+      <h2 class="section-title">Everything You <em>Need</em></h2>
+    </div>
+    <div class="amenities-grid fade-in" style="transition-delay:0.1s;">
+      <div class="amen-card"><div class="amen-icon">💪</div><div class="amen-name">Fitness Center</div></div>
+      <div class="amen-card"><div class="amen-icon">🌿</div><div class="amen-name">Rooftop Garden</div></div>
+      <div class="amen-card"><div class="amen-icon">🛋️</div><div class="amen-name">Community Lounge</div></div>
+      <div class="amen-card"><div class="amen-icon">⚡</div><div class="amen-name">EV Charging Stations</div></div>
+      <div class="amen-card"><div class="amen-icon">🏠</div><div class="amen-name">Smart Home Features</div></div>
+      <div class="amen-card"><div class="amen-icon">🐾</div><div class="amen-name">Pet Friendly Areas</div></div>
+      <div class="amen-card"><div class="amen-icon">📶</div><div class="amen-name">High-Speed Internet</div></div>
+      <div class="amen-card"><div class="amen-icon">🅿️</div><div class="amen-name">Secure Parking</div></div>
+      <div class="amen-card"><div class="amen-icon">📦</div><div class="amen-name">Package Lockers</div></div>
+      <div class="amen-card"><div class="amen-icon">💼</div><div class="amen-name">Co-working Spaces</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Gallery</p>
+      <h2 class="section-title">Life at <em>GreenSkyRise</em></h2>
+    </div>
+    <div class="gallery-tabs fade-in" style="transition-delay:0.1s;">
+      <button class="gallery-tab active" onclick="switchGallery(this,'exterior')">Exterior</button>
+      <button class="gallery-tab" onclick="switchGallery(this,'interiors')">Interiors</button>
+      <button class="gallery-tab" onclick="switchGallery(this,'garden')">Rooftop Garden</button>
+      <button class="gallery-tab" onclick="switchGallery(this,'amenities')">Amenities</button>
+      <button class="gallery-tab" onclick="switchGallery(this,'events')">Community</button>
+    </div>
+
+    <div class="gallery-grid fade-in" id="galleryGrid" style="transition-delay:0.2s;">
+      <!-- filled by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="container">
+    <div class="booking-grid">
+      <div class="fade-in">
+        <p class="section-label">Book a Tour</p>
+        <h2 class="section-title">See It <em>In Person</em></h2>
+        <p class="section-body" style="margin-bottom:2rem;">Experience GreenSkyRise firsthand. Our team will walk you through our eco-certified apartments, amenities, and sustainability features.</p>
+        <div style="background:var(--glass);border:1px solid var(--glass-border);border-radius:8px;padding:2rem;">
+          <div style="margin-bottom:1.5rem;">
+            <div style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:0.4rem;">Contact</div>
+            <div style="font-size:0.95rem;color:var(--g6);">GreenSkyRise@DylanChase</div>
+          </div>
+          <div style="margin-bottom:1.5rem;">
+            <div style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:0.4rem;">Location</div>
+            <div style="font-size:0.95rem;color:var(--gray);">Boston, Massachusetts</div>
+          </div>
+          <div>
+            <div style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:0.4rem;">Tour Hours</div>
+            <div style="font-size:0.95rem;color:var(--gray);">Mon–Sat · 9am – 6pm</div>
+          </div>
+        </div>
+      </div>
+      <div class="fade-in" style="transition-delay:0.15s;">
+        <form id="tourForm" onsubmit="submitTour(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="Jane" required>
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Smith" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="jane@example.com" required>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+1 (617) 000-0000">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Apartment Type</label>
+              <select required>
+                <option value="">Select type</option>
+                <option>Studio</option>
+                <option>One Bedroom</option>
+                <option>Two Bedroom</option>
+                <option>Three Bedroom</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Preferred Date</label>
+              <input type="date" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Additional Questions</label>
+            <textarea placeholder="Any specific questions or requests?"></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;padding:1rem;">Request a Tour</button>
+          <div class="success-msg" id="successMsg">
+            ✅ Thank you for your interest in GreenSkyRise. Our team will contact you shortly to schedule your tour.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">Reviews</p>
+      <h2 class="section-title">Resident <em>Voices</em></h2>
+      <div class="reviews-header">
+        <div class="avg-rating" id="avgRating">5.0</div>
+        <div>
+          <div class="stars" id="avgStars">★★★★★</div>
+          <div style="font-size:0.82rem;color:var(--mid);margin-top:0.3rem;" id="reviewCount">Based on 4 reviews</div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-grid fade-in" id="reviewsGrid" style="transition-delay:0.1s;">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Beautiful apartments and incredible rooftop garden. Love living here!"</p>
+        <div class="review-author">— Sarah M.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Modern design, eco-friendly features, and excellent management."</p>
+        <div class="review-author">— James T.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The sustainability efforts are amazing and the building is gorgeous."</p>
+        <div class="review-author">— Emily R.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Best apartment community I've ever lived in."</p>
+        <div class="review-author">— Michael L.</div>
+      </div>
+    </div>
+
+    <!-- New reviews -->
+    <div id="new-reviews"></div>
+
+    <!-- Add review -->
+    <div class="add-review fade-in" style="transition-delay:0.2s;">
+      <h3>Leave a Review</h3>
+      <div class="star-selector" id="starSelector">
+        <button class="star-btn" onclick="setStar(1)">★</button>
+        <button class="star-btn" onclick="setStar(2)">★</button>
+        <button class="star-btn" onclick="setStar(3)">★</button>
+        <button class="star-btn" onclick="setStar(4)">★</button>
+        <button class="star-btn" onclick="setStar(5)">★</button>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="reviewName" placeholder="Your name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Your Review</label>
+        <textarea id="reviewText" placeholder="Share your experience at GreenSkyRise…"></textarea>
+      </div>
+      <button class="btn-primary" onclick="submitReview()">Submit Review</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">🌿 Green<span>Sky</span>Rise</div>
+        <p class="footer-stmt">Building a greener future, one home at a time. GreenSkyRise is committed to leading the way in sustainable urban living through innovation, design, and responsibility.</p>
+        <div class="social-row">
+          <a href="#" class="social-btn">𝕏</a>
+          <a href="#" class="social-btn">in</a>
+          <a href="#" class="social-btn">ig</a>
+          <a href="#" class="social-btn">fb</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#tour">Building Tour</a></li>
+          <li><a href="#apartments">Floor Plans</a></li>
+          <li><a href="#availability">Availability</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Living</div>
+        <ul class="footer-links">
+          <li><a href="#rooftop">Rooftop Garden</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#booking">Book a Tour</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:GreenSkyRise@DylanChase">GreenSkyRise@DylanChase</a></li>
+          <li><a href="#">Boston, Massachusetts</a></li>
+          <li><a href="#">Mon–Sat · 9am–6pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 GreenSkyRise. All rights reserved.</span>
+      <span>Luxury Living. Sustainable Future.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-inner" onclick="event.stopPropagation()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <div id="lightboxContent" style="width:100%;height:400px;background:var(--g1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:4rem;"></div>
+  </div>
+</div>
+
+<script>
+// Scroll animations
+const fadeEls = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+fadeEls.forEach(el => observer.observe(el));
+
+// Apartment tabs
+function switchApt(btn, id) {
+  document.querySelectorAll('.apt-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.apt-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-'+id).classList.add('active');
+}
+
+// Amenity tour highlight
+function highlightAmenity(el, floor) {
+  document.querySelectorAll('.amenity-tag').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  drawBuilding(floor);
+}
+
+// 3D Building Canvas
+const canvas = document.getElementById('buildingCanvas');
+const ctx = canvas ? canvas.getContext('2d') : null;
+let angle = 0, isDragging = false, lastX = 0, zoom = 1;
+let highlightFloor = 'roof';
+
+function resizeCanvas() {
+  if(!canvas) return;
+  const parent = canvas.parentElement;
+  canvas.width = parent.clientWidth;
+  canvas.height = parent.clientHeight;
+  drawBuilding(highlightFloor);
+}
+
+function drawBuilding(floor) {
+  if(!ctx) return;
+  highlightFloor = floor;
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  const cx = W/2, cy = H*0.55;
+  const bW = 120*zoom, bH = 280*zoom, bD = 40*zoom;
+  const cos = Math.cos(angle)*0.4, sin = Math.sin(angle)*0.3;
+
+  // BG
+  ctx.fillStyle = '#0a1a0f';
+  ctx.fillRect(0,0,W,H);
+
+  // Grid
+  ctx.strokeStyle = 'rgba(45,145,80,0.08)';
+  ctx.lineWidth = 1;
+  for(let x=0; x<W; x+=50) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+  for(let y=0; y<H; y+=50) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+
+  // Shadow
+  ctx.fillStyle = 'rgba(45,145,80,0.08)';
+  ctx.beginPath();
+  ctx.ellipse(cx+cos*bD, cy+10, bW*0.7, 15, 0, 0, Math.PI*2);
+  ctx.fill();
+
+  // Side face
+  const sideColor = floor === 'ev' || floor === 'parking' ? '#1a5230' : '#112b1a';
+  ctx.fillStyle = sideColor;
+  ctx.beginPath();
+  ctx.moveTo(cx+bW/2, cy-bH);
+  ctx.lineTo(cx+bW/2+bD*cos*2, cy-bH+bD*sin*2);
+  ctx.lineTo(cx+bW/2+bD*cos*2, cy+bD*sin*2);
+  ctx.lineTo(cx+bW/2, cy);
+  ctx.closePath();
+  ctx.fill();
+
+  // Front face
+  const floors = ['ev','parking','gym','lounge','cowork'];
+  const fg = (f) => floors.includes(f) ? `rgba(30,100,60,0.9)` : '#1a3d25';
+  ctx.fillStyle = fg(floor);
+  ctx.fillRect(cx-bW/2, cy-bH, bW, bH);
+
+  // Highlight strip
+  const stripMap = { roof: [cy-bH, 30], gym: [cy-bH*0.13, 30], lounge: [cy-bH*0.2, 30], cowork: [cy-bH*0.27, 30], ev: [cy-20, 30], parking: [cy-60, 30] };
+  if(stripMap[floor]) {
+    ctx.fillStyle = 'rgba(77,184,112,0.3)';
+    ctx.fillRect(cx-bW/2, stripMap[floor][0], bW, stripMap[floor][1]);
+  }
+
+  // Windows
+  const cols = 4, rows = 9;
+  const wW = 22*zoom, wH = 16*zoom, hPad = 12*zoom, vPad = 28*zoom;
+  for(let r=0; r<rows; r++) {
+    for(let c=0; c<cols; c++) {
+      const wx = cx - bW/2 + hPad + c*(wW+8*zoom);
+      const wy = cy - bH + vPad + r*(wH+12*zoom);
+      const lit = (r+c)%3 === 0;
+      ctx.fillStyle = lit ? 'rgba(184,236,200,0.85)' : 'rgba(125,212,154,0.2)';
+      ctx.fillRect(wx, wy, wW, wH);
+    }
+  }
+
+  // Roof top
+  ctx.fillStyle = floor === 'roof' ? '#4db870' : '#2d9150';
+  ctx.beginPath();
+  ctx.moveTo(cx-bW/2, cy-bH);
+  ctx.lineTo(cx+bW/2, cy-bH);
+  ctx.lineTo(cx+bW/2+bD*cos*2, cy-bH+bD*sin*2);
+  ctx.lineTo(cx-bW/2+bD*cos*2, cy-bH+bD*sin*2);
+  ctx.closePath();
+  ctx.fill();
+
+  // Rooftop garden dots
+  ctx.fillStyle = 'rgba(125,212,154,0.9)';
+  for(let i=0; i<8; i++) {
+    ctx.beginPath();
+    ctx.arc(cx - bW/2 + 15 + i*15, cy-bH+8, 5, 0, Math.PI*2);
+    ctx.fill();
+  }
+
+  // Label
+  const labels = { roof:'Rooftop Garden', gym:'Fitness Center', lounge:'Community Lounge', cowork:'Co-working', ev:'EV Charging', parking:'Parking' };
+  ctx.fillStyle = '#4db870';
+  ctx.font = `${13*zoom}px DM Sans, sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.fillText(labels[floor] || '', cx, cy+40);
+}
+
+if(canvas) {
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+  canvas.addEventListener('mousedown', e => { isDragging=true; lastX=e.clientX; });
+  canvas.addEventListener('mouseup', () => isDragging=false);
+  canvas.addEventListener('mousemove', e => { if(!isDragging) return; angle += (e.clientX-lastX)*0.01; lastX=e.clientX; drawBuilding(highlightFloor); });
+  canvas.addEventListener('wheel', e => { zoom = Math.max(0.5, Math.min(2, zoom - e.deltaY*0.001)); drawBuilding(highlightFloor); e.preventDefault(); }, {passive:false});
+  canvas.addEventListener('touchstart', e => { lastX = e.touches[0].clientX; });
+  canvas.addEventListener('touchmove', e => { angle += (e.touches[0].clientX - lastX)*0.01; lastX = e.touches[0].clientX; drawBuilding(highlightFloor); e.preventDefault(); }, {passive:false});
+  // Auto-rotate
+  let autoRotate = setInterval(() => { if(!isDragging){ angle += 0.004; drawBuilding(highlightFloor); } }, 30);
+}
+
+// Gallery
+const galleryData = {
+  exterior: ['🏙️','🌆','🌇','🏢','🌃','🌉'],
+  interiors: ['🛋️','🍳','🛏️','🚿','🪴','💡'],
+  garden: ['🌿','🌸','🥦','🌻','🐝','🌱'],
+  amenities: ['💪','📦','🅿️','⚡','📶','🛁'],
+  events: ['🎉','👥','🌮','🎵','🎨','☕']
+};
+const galleryLabels = {
+  exterior:['Building Front','Aerial View','Dusk Shot','Tower View','Night View','City Scene'],
+  interiors:['Living Room','Kitchen','Bedroom','Bathroom','Den','Smart Lighting'],
+  garden:['Garden View','Flower Beds','Veggie Plots','Sunflowers','Bee Garden','Seedlings'],
+  amenities:['Fitness Center','Package Room','Parking','EV Station','WiFi Lounge','Spa'],
+  events:['Resident Party','Community Night','Food Truck','Live Music','Art Night','Coffee Hour']
+};
+let currentGallery = 'exterior';
+
+function renderGallery(cat) {
+  const grid = document.getElementById('galleryGrid');
+  const items = galleryData[cat];
+  const labels = galleryLabels[cat];
+  grid.innerHTML = items.map((emoji, i) => `
+    <div class="gallery-item${i===0?' ':''}${i===0?'':''}" style="${i===0?'grid-column:span 2;aspect-ratio:2/1;':''}" onclick="openLightbox('${emoji}','${labels[i]}')">
+      <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;background:linear-gradient(135deg,var(--g1),var(--g2));">
+        <span style="font-size:${i===0?'4rem':'2.5rem'}">${emoji}</span>
+        <span style="font-size:0.78rem;color:var(--gray);letter-spacing:0.06em;text-transform:uppercase;">${labels[i]}</span>
+      </div>
+      <div class="gallery-overlay">🔍</div>
+    </div>
+  `).join('');
+}
+renderGallery('exterior');
+
+function switchGallery(btn, cat) {
+  document.querySelectorAll('.gallery-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderGallery(cat);
+}
+
+// Lightbox
+function openLightbox(emoji, label) {
+  document.getElementById('lightbox').classList.add('open');
+  document.getElementById('lightboxContent').innerHTML = `<div style="text-align:center"><div style="font-size:6rem;margin-bottom:1rem;">${emoji}</div><div style="font-size:1rem;color:var(--gray);letter-spacing:0.08em;text-transform:uppercase;">${label}</div></div>`;
+}
+function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+
+// Tour form
+function submitTour(e) {
+  e.preventDefault();
+  document.getElementById('successMsg').style.display = 'block';
+  e.target.querySelectorAll('input,select,textarea').forEach(el => el.disabled = true);
+  e.target.querySelector('button[type=submit]').textContent = '✓ Tour Requested';
+}
+
+// Reviews
+let selectedStars = 5;
+let reviews = [{stars:5,text:'Beautiful apartments and incredible rooftop garden. Love living here!',author:'Sarah M.'},{stars:5,text:'Modern design, eco-friendly features, and excellent management.',author:'James T.'},{stars:5,text:'The sustainability efforts are amazing and the building is gorgeous.',author:'Emily R.'},{stars:5,text:'Best apartment community I\'ve ever lived in.',author:'Michael L.'}];
+
+function setStar(n) {
+  selectedStars = n;
+  document.querySelectorAll('.star-btn').forEach((b,i) => { b.classList.toggle('selected', i < n); });
+}
+setStar(5);
+
+function updateAvgRating() {
+  const avg = reviews.reduce((s,r) => s+r.stars, 0) / reviews.length;
+  document.getElementById('avgRating').textContent = avg.toFixed(1);
+  document.getElementById('avgStars').textContent = '★'.repeat(Math.round(avg)) + '☆'.repeat(5-Math.round(avg));
+  document.getElementById('reviewCount').textContent = `Based on ${reviews.length} reviews`;
+}
+
+function submitReview() {
+  const name = document.getElementById('reviewName').value.trim();
+  const text = document.getElementById('reviewText').value.trim();
+  if(!name || !text) return;
+  const r = { stars: selectedStars, text, author: name };
+  reviews.push(r);
+  updateAvgRating();
+  const container = document.getElementById('new-reviews');
+  const card = document.createElement('div');
+  card.className = 'review-card';
+  card.style.cssText = 'background:rgba(45,145,80,0.08);border:1px solid var(--g4);border-radius:8px;padding:1.6rem;margin-top:0.8rem;';
+  card.innerHTML = `<div class="review-stars">${'★'.repeat(selectedStars)}${'☆'.repeat(5-selectedStars)}</div><p class="review-text">"${text}"</p><div class="review-author">— ${name}</div>`;
+  container.appendChild(card);
+  document.getElementById('reviewName').value = '';
+  document.getElementById('reviewText').value = '';
+  setStar(5);
+}
+
+// Smooth scroll for CTA
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if(target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+
+// Nav transparency
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').style.background = window.scrollY > 50 ? 'rgba(10,26,15,0.95)' : 'rgba(10,26,15,0.7)';
+});
+</script>
+</body>
+</html>
